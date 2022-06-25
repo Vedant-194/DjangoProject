@@ -1,0 +1,27 @@
+{% extends 'myapp/base.html'%}
+
+
+{% block body%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img width="250" height="250" src="{{book.book_image.url}}">
+        </div>
+        <div class="col-md-6">
+            <h2 >{{book.name}}</h2><br>
+            <h4 style="color:blue";>Description : </h4><h4>{{book.description}}</h4><br>
+            <h3 style="color:blue";>Author : </h3><h4>{{book.author}}</h4><br>
+            <h4>Price : Rs. {{book.price}}</h4><br>
+            <h4>Genre : {{book.genre}}</h4><br>
+
+            <a class="btn btn-success" href="{{book.book_pdf.url}}">View</a><br><br>
+            <hr>
+            <a class="btn btn-warning"href="{% url 'myapp:update' book.id %}">Update</a>
+            <a class="btn btn-danger"href="{% url 'myapp:delete' book.id %}">Delete</a>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

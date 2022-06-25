@@ -1,0 +1,13 @@
+{% extends 'myapp/base.html'%}
+
+
+{% block body%}
+
+
+<form method="POST">
+    {% csrf_token %}
+ <center><a class="btn btn-danger" href="javascript:alert('Are you sure you want to delete the book!!');">Delete</a><br></center>
+    <center><input type="submit" name="" id=""></center>
+</form>
+
+{% endblock %}

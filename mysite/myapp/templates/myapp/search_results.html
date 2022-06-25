@@ -1,0 +1,48 @@
+{% extends 'myapp/base.html' %}
+
+<!--{% if book.name %}
+    <p>Found {{ book.name|length }} item{{ book.name|pluralize }}.</p>
+        <ul>
+            {% for s in menu_item %}
+            <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
+                <div class="item">
+                    <div class="item-title">
+                    <h2>{{ book.name }}</h2>
+                    <div class="border-bottom"></div>
+                    <span>$ {{book.price}}</span>
+                    </div>
+                    <p>{{book.description}}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+{% else %}
+    <p>No Items matched your search criteria.</p>
+{% endif %}-->
+
+{% block body %}
+
+<div class="container">
+    <div class="row" >
+        {% for book in book %}
+        <div class="col-md-4 ">
+            <div class ="card">
+                <img class="card-img-top" src="{{book.book_image.url}}" alt="Card image cap" width="100" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">{{book.name}}</h5>
+                    <p class="card-text">{{book.description}}</p>
+                    <p class="card-text">${{book.price}}</p>
+                    <p class="card-text">{{book.author}}</p>
+                    <a class="btn btn-success"href="{% url 'myapp:details' book.id %}">Details</a><br>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <center><h3>No book Found!!</h3></center>
+
+
+        {% endfor%}
+    </div>
+</div>
+
+{% endblock %}
